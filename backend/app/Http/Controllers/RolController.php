@@ -12,7 +12,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $rol = new Rol();
+        return $rol->all();
     }
 
     /**
@@ -28,23 +29,44 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $rol = new Rol();
+
+            $rol->rol = $request->rol;
+            $rol->usuariocreacion = $request->usuariocreacion;
+            $rol->usuariomodificacion = $request->usuariomodificacion;
+         
+            $rol->save();
+            return $rol;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Rol $rol)
+    public function show(Rol $id)
     {
-        //
+        $rol = new Rol();
+        return $rol->find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rol $rol)
+    public function edit(Rol $id, Request $request)
     {
-        //
+        try {
+            $rol = Rol::find($id);
+            $rol->rol = $request->rol;
+            $rol->usuariocreacion = $request->usuariocreacion;
+            $rol->usuariomodificacion = $request->usuariomodificacion;
+            $rol->save();
+            return $rol;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
@@ -58,8 +80,10 @@ class RolController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rol $rol)
+    public function destroy(Rol $id)
     {
-        //
+        $rol = Rol::find($id);
+        $rol->delete;
+        return $rol;
     }
 }

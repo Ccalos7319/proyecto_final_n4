@@ -12,7 +12,8 @@ class PaginaController extends Controller
      */
     public function index()
     {
-        //
+        $pagina = new Pagina();
+        return $pagina->all();
     }
 
     /**
@@ -28,23 +29,53 @@ class PaginaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $pagina = new Pagina();
+            $pagina->usuariocreacion = $request->usuariocreacion;
+            $pagina->usuariomodificacion = $request->usuariomodificacion;
+            $pagina->url = $request->url;
+            $pagina->estado = $request->estado;
+            $pagina->nombre = $request->nombre;
+            $pagina->descripcion = $request->descripcion;
+            $pagina->icono = $request->icono;
+            $pagina->tipo = $request->tipo;
+           
+            $pagina->save();
+            return $pagina;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pagina $pagina)
+    public function show(Pagina $id)
     {
-        //
+        $pagina = new Pagina();
+        return $pagina->find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pagina $pagina)
+    public function edit(Pagina $id, Request $request)
     {
-        //
+        try {
+            $pagina = Pagina::find($id);
+            $pagina->usuariocreacion = $request->usuariocreacion;
+            $pagina->usuariomodificacion = $request->usuariomodificacion;
+            $pagina->url = $request->url;
+            $pagina->estado = $request->estado;
+            $pagina->nombre = $request->nombre;
+            $pagina->descripcion = $request->descripcion;
+            $pagina->icono = $request->icono;
+            $pagina->tipo = $request->tipo;
+            $pagina->save();
+            return $pagina;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
@@ -58,8 +89,10 @@ class PaginaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pagina $pagina)
+    public function destroy(Pagina $id)
     {
-        //
+        $pagina = Pagina::find($id);
+        $pagina->delete;
+        return $pagina;
     }
 }

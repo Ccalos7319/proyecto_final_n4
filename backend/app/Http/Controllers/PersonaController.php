@@ -12,7 +12,8 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        //
+        $persona = new Persona();
+        return $persona->all();
     }
 
     /**
@@ -28,23 +29,49 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $persona = new Persona();
+            $persona->primernombre = $request->primernombre;
+            $persona->segundonombre = $request->segundonombre;
+            $persona->primerapellido = $request->primerapellido;
+            $persona->segundoapellido = $request->segundoapellido;
+            $persona->usuariocreacion = $request->usuariocreacion;
+            $persona->usuariomodificacion = $request->usuariomodificacion;
+         
+            $persona->save();
+            return $persona;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Persona $persona)
+    public function show(Persona $id)
     {
-        //
+        $persona = new Persona();
+        return $persona->find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Persona $persona)
+    public function edit(Persona $id, Request $request)
     {
-        //
+        try {
+            $persona = Persona::find($id);
+            $persona->primernombre = $request->primernombre;
+            $persona->segundonombre = $request->segundonombre;
+            $persona->primerapellido = $request->primerapellido;
+            $persona->segundoapellido = $request->segundoapellido;
+            $persona->usuariocreacion = $request->usuariocreacion;
+            $persona->usuariomodificacion = $request->usuariomodificacion;
+            $persona->save();
+            return $persona;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
@@ -58,8 +85,10 @@ class PersonaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Persona $persona)
+    public function destroy(Persona $id)
     {
-        //
+        $persona = Persona::find($id);
+        $persona->delete;
+        return $persona;
     }
 }

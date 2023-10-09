@@ -12,7 +12,8 @@ class EnlaceController extends Controller
      */
     public function index()
     {
-        //
+        $enlace = new Enlace();
+        return $enlace->all();
     }
 
     /**
@@ -28,23 +29,49 @@ class EnlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $enlace = new Enlace();
+
+            $enlace->id_pagina = $request->id_pagina;
+            $enlace->id_rol = $request->id_rol;
+            $enlace->descripcion = $request->descripcion;
+            $enlace->usuariocreacion = $request->usuariocreacion;
+            $enlace->usuariomodificacion = $request->usuariomodificacion;
+           
+            
+            $enlace->save();
+            return $enlace;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Enlace $enlace)
+    public function show(Enlace $id)
     {
-        //
+        $enlace = new Enlace();
+        return $enlace->find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Enlace $enlace)
+    public function edit(Enlace $id, Request $request)
     {
-        //
+        try {
+            $enlace = Enlace::find($id);
+            $enlace->id_pagina = $request->id_pagina;
+            $enlace->id_rol = $request->id_rol;
+            $enlace->descripcion = $request->descripcion;
+            $enlace->usuariocreacion = $request->usuariocreacion;
+            $enlace->usuariomodificacion = $request->usuariomodificacion;
+            $enlace->save();
+            return $enlace;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
@@ -58,8 +85,10 @@ class EnlaceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Enlace $enlace)
+    public function destroy(Enlace $id)
     {
-        //
+        $enlace = Enlace::find($id);
+        $enlace->delete;
+        return $enlace;
     }
 }

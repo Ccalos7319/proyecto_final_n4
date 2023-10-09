@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Persona;
+use Database\Factories\PersonaFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +14,6 @@ class PersonaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Persona::factory(20)->create();
     }
 }

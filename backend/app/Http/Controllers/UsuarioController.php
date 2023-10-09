@@ -12,7 +12,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = new Usuario();
+        return $usuario->all();
     }
 
     /**
@@ -28,23 +29,53 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $usuario = new Usuario();
+            $usuario->id_persona = $request->id_persona;
+            $usuario->usuario = $request->usuario;
+            $usuario->clave = $request->clave;
+            $usuario->habilitado = $request->habilitado;
+            $usuario->fecha = $request->fecha;
+            $usuario->id_rol = $request->id_rol;
+            $usuario->usuariocreacion = $request->usuariocreacion;
+            $usuario->usuariomodificacion = $request->usuariomodificacion;
+          
+            $usuario->save();
+            return $usuario;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    public function show(Usuario $id)
     {
-        //
+        $usuario = new Usuario();
+        return $usuario->find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuario $usuario)
+    public function edit(Usuario $id, Request $request)
     {
-        //
+        try {
+            $usuario = Usuario::find($id);
+            $usuario->id_persona = $request->id_persona;
+            $usuario->usuario = $request->usuario;
+            $usuario->clave = $request->clave;
+            $usuario->habilitado = $request->habilitado;
+            $usuario->fecha = $request->fecha;
+            $usuario->id_rol = $request->id_rol;
+            $usuario->usuariocreacion = $request->usuariocreacion;
+            $usuario->usuariomodificacion = $request->usuariomodificacion;
+            $usuario->save();
+            return $usuario;
+        } catch (\Exception $th) {
+            return json_encode($th);
+        }
     }
 
     /**
@@ -58,8 +89,10 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(Usuario $id)
     {
-        //
+        $ususario = Usuario::find($id);
+        $ususario->delete;
+        return $ususario;
     }
 }
