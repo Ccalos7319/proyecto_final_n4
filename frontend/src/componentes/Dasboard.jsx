@@ -2,19 +2,37 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Profile from "./Profile";
 import New from "./New";
+import Parametros from "./Parametros";
+import Roles from "./Roles";
+import Bitacoras from "./Bitacoras";
+import Enlaces from "./Enlaces";
 function Dashboard() {
   const [isVisible, setIsVisible] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(false);
+  const [isMenuActive, setIsMenuActive] = useState(false);
 
   const [datos, setDatos] = useState();
+  const [datosRol, setDatosRol] = useState([]);
   useEffect(() => {
-    const promesa = fetch("http://127.0.0.1:8000/api/estudiantes");
-    Promise.all([promesa]).then(async (values) => {
-      const data = await values[0].json();
-      if (data.cod === "404") {
-        alert(data.message);
+    const promesaUsuario = fetch("http://127.0.0.1:8000/api/usuario");
+    const promesaRol =  fetch("http://127.0.0.1:8000/api/rol");
+    Promise.all([promesaUsuario,promesaRol]).then(async (values) => {
+      const usuarioData = await values[0].json();
+      const rolData = await values[1].json();
+
+      if (usuarioData.cod === "404") {
+        alert(usuarioData.message);
       } else {
-        setDatos(data);
+        setDatos(usuarioData);
+        console.log(usuarioData);
+      }
+
+      if (rolData.cod === "404") {
+        alert(rolData.message);
+      } else {
+        // Almacena los datos de rol en el estado
+        setDatosRol(rolData);
+        console.log("Datos de rol:", rolData);
       }
     });
   }, []);
@@ -24,6 +42,9 @@ function Dashboard() {
   };
   const toggleProfileVisibility = () => {
     setIsProfileVisible(!isProfileVisible);
+  };
+  const toggleMenuVisibility = () => {
+    setIsMenuActive(!isMenuActive);
   };
 
   return (
@@ -42,48 +63,70 @@ function Dashboard() {
               />
               <h1 className="text-white text-4xl">Usuario</h1>
             </div>
-            <ul className="flex flex-col gap-7 text-white">
+
+            <button className=" text-white font-medium"  onClick={toggleMenuVisibility}>General y Seguridad</button>
+            {isMenuActive &&
+               <ul className="flex flex-col gap-7 text-white">
+
               <NavLink
                 className={({ isActive }) =>
                   isActive ? " border-b-2 border-white " : null
                 }
-                to="/"
+                to="/parametros"
               >
                 <li className="flex items-center gap-5 pb-4">
-                  <h2>Home</h2>
+                  <img src="../public/parametros.svg" alt="parametros" />
+                  <h2 className="font-medium">Parametros</h2>
                 </li>
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? " border-b-2 border-white " : null
                 }
-                to="/cursos"
+                to="/roles"
               >
                 <li className="flex items-center gap-5 pb-4">
-                  <img
-                    width="30"
-                    height="30"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABmElEQVR4nO3Yv04UQRzA8UVoFHoStLrKgkYpqXgCIw9gwT2ABTyApa0VkcQCHoIQQigksYDEGAvlFYyUEJSEfMiEIdksd+cd7t3tXOZb3v0mM9/9/dnJFkUmk8lkMjWAQ+lx1EkkSYpuIkUiyCINQ85Iw5BCRvAC3/ENU8mJ4BE28Dce56RHbDNFMI/d0itiB7NJieA1zuIRfuNVH2uaI4LH+FDKwgGe9rm2fhEs4muoabT6XLOE07jtH6x3a+yRiOANzktPNZTISo/4KbwtNfTPMKUesG89IqERsV1pzrtmDYdsd1jzrHLL3sSTQSVqE8HzOOcDl+EJx9+n8b500I+Yif+tDtrQQxXBGi5i+I/QHx1i2qXSCVn6VJLbx8K/9hmaSJwwW5VSmusRv4xfpfgrvAsvvaIG/IdImEhiNtb63KyF4zjRBm7oYYl8iX1xr5TGgTqavQnIIg1DzkjDkDNSDPQR7xovJ0EkcDgpInuTIHI98tJyextNnaNkv8JXSe6OVSWLND4jqVOEjpc+n8ddGZlMphgNN6hg3FjAPsDmAAAAAElFTkSuQmCC"
-                  />
-                  <h2>Cursos</h2>
+                  <img src="../public/roless.svg" alt="" />
+                  <h2 className="font-medium">Roles</h2>
                 </li>
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? " border-b-2 border-white " : null
                 }
-                to="/new"
+                to="/usuario"
               >
                 <li className="flex items-center gap-5 pb-4">
-                  <img
-                    width="30"
-                    height="30"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAATklEQVR4nO3Tyw0AIAgD0O6/GOpS9Wj0RMDfoW8ASkoA5AaSjUM5GTSBgrxU3fvqOP9JVnFvnIUfgurGHMvc0LdxloLCVF3Y8mcWnyTw6/WgPCvfsn3/AAAAAElFTkSuQmCC"
-                  />
-                  <h2>New</h2>
+                  <img src="../public/usuarios.svg" alt="usuarios" />
+                  <h2 className="font-medium">Usuarios</h2>
                 </li>
               </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " border-b-2 border-white " : null
+                }
+                to="/bitacoras"
+              >
+                <li className="flex items-center gap-5 pb-4">
+                 <img src="../public/bitacora.svg" alt="bitacoras" />
+                  <h2 className="font-medium">Bitacoras</h2>
+                </li>
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " border-b-2 border-white " : null
+                }
+                to="/enlaces"
+              >
+                <li className="flex items-center gap-5 pb-4">
+                  <img src="../public/enlace.svg" alt="enlace" />
+                  <h2 className="font-medium">Enlaces</h2>
+                </li>
+              </NavLink>
+
             </ul>
+            }
+           
           </section>
           <div className="bg-slate-600 h-screen w-[15%]">
 
@@ -121,9 +164,11 @@ function Dashboard() {
               
             )}
             <Routes>
-             
-            <Route path="/new" element={<New />} />
-            <Route path="/new" element={<New datos={datos} />} />
+            <Route path="/parametros" element={<Parametros />} />
+            <Route path="/roles" element={<Roles datosRol={datosRol}  />} />
+            <Route path="/usuario" element={<New datos={datos}/>} />
+            <Route path="/bitacoras" element={<Bitacoras />} />
+            <Route path="/enlaces" element={<Enlaces />} />
            </Routes>
           </div>
         </div>
