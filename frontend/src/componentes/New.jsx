@@ -42,7 +42,7 @@ function New({ datos }) {
               <tr key={el.id}>
                 <td className="px-6 py-4 whitespace-no-wrap">{el.usuario}</td>
                 <td className="px-6 py-4 whitespace-no-wrap">{el.habilitado}</td>
-                <td className="px-6 py-4 whitespace-no-wrap">{el.id_rol}</td>
+                <td className="px-6 py-4 whitespace-no-wrap">{el.id_rol.rol}</td>
 
                 <td className=" flex text-center gap-3 items-center p-5">
                   <button className=" bg-[#16a34a] w-20 rounded-lg ">

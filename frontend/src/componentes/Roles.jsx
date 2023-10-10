@@ -42,7 +42,7 @@ function Roles({datosRol }) {
               </td>
               
             </tr>
-           ))};
+           ))}
         </tbody>
       </table>
     </div>

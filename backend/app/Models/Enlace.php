@@ -13,7 +13,7 @@ class Enlace extends Model
         return $this->belongsTo(Pagina::class, 'id_pagina', 'id');
     }
     public function rol()
-{
-    return $this->belongsTo(Rol::class, 'id_rol', 'id');
-}
+    {
+        return $this->belongsTo(Rol::class, 'id_rol', 'id');
+    }
 }

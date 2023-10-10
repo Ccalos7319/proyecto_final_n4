@@ -14,7 +14,7 @@ class EnlaceController extends Controller
 
     public function obtenerEnlaces(Request $request)
     {
-        $enlaces = Enlace::all(); // Obtén todos los enlaces
+        $enlaces = Enlace::all();
 
         $respuesta = [];
 
@@ -25,11 +25,11 @@ class EnlaceController extends Controller
                 'id' => $enlace->id,
                 'id_pagina' => [
                     'url' => $paginaUrl,
-                    // Otras propiedades de la tabla "paginas" que necesites
+                    
                 ],
                 'id_rol' => $enlace->rol ? $enlace->rol->rol : null,
                 'descripcion' => $enlace->descripcion,
-                // Otras propiedades de la tabla "enlaces"
+               
             ];
         }
 

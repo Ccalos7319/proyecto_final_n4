@@ -1,18 +1,20 @@
 
-import './App.css'
-// import Login from './componentes/login'
-import Dashboard from './componentes/Dasboard'
+import Dashboard from "./componentes/Dasboard";
+// import LoginUser from "./componentes/LoginUser";
 
 function App() {
-  
-
   return (
-    <>
-      {/* <Login /> */}
-      <Dashboard/>
+  <div>
 
-    </>
-  )
+    {/* <LoginUser /> */}
+
+    <Dashboard />
+  </div>
+
+    
+ 
+
+  );
 }
 
-export default App
+export default App;
