@@ -10,6 +10,32 @@ class EnlaceController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+    public function obtenerEnlaces(Request $request)
+    {
+        $enlaces = Enlace::all(); // Obtén todos los enlaces
+
+        $respuesta = [];
+
+        foreach ($enlaces as $enlace) {
+            $paginaUrl = $enlace->pagina ? $enlace->pagina->url : null;
+
+            $respuesta[] = [
+                'id' => $enlace->id,
+                'id_pagina' => [
+                    'url' => $paginaUrl,
+                    // Otras propiedades de la tabla "paginas" que necesites
+                ],
+                'id_rol' => $enlace->rol ? $enlace->rol->rol : null,
+                'descripcion' => $enlace->descripcion,
+                // Otras propiedades de la tabla "enlaces"
+            ];
+        }
+
+        return response()->json($respuesta);
+    }
+
     public function index()
     {
         $enlace = new Enlace();
@@ -37,8 +63,8 @@ class EnlaceController extends Controller
             $enlace->descripcion = $request->descripcion;
             $enlace->usuariocreacion = $request->usuariocreacion;
             $enlace->usuariomodificacion = $request->usuariomodificacion;
-           
-            
+
+
             $enlace->save();
             return $enlace;
         } catch (\Exception $th) {
@@ -52,6 +78,8 @@ class EnlaceController extends Controller
     public function show(Enlace $id)
     {
         $enlace = new Enlace();
+
+
         return $enlace->find($id);
     }
 

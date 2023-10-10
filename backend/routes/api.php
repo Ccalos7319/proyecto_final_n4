@@ -64,4 +64,6 @@ Route::controller(EnlaceController::class)->group(function () {
     Route::post('/enlace', 'store');
     Route::put('/enlace/{id}', 'edit');
     Route::delete('/enlace/{id}', 'destroy');
+    
 });
+Route::get('/enlaces', [EnlaceController::class, 'obtenerEnlaces']);

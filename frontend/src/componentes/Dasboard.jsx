@@ -13,13 +13,16 @@ function Dashboard() {
 
   const [datos, setDatos] = useState();
   const [datosRol, setDatosRol] = useState([]);
+  const [datosEnlaces, setDatosEnlaces] = useState([]);
   useEffect(() => {
     const promesaUsuario = fetch("http://127.0.0.1:8000/api/usuario");
     const promesaRol =  fetch("http://127.0.0.1:8000/api/rol");
-    Promise.all([promesaUsuario,promesaRol]).then(async (values) => {
+    const promesaEnlaces = fetch("http://127.0.0.1:8000/api/enlaces"); // Agrega esta línea
+
+    Promise.all([promesaUsuario,promesaRol, promesaEnlaces]).then(async (values) => {
       const usuarioData = await values[0].json();
       const rolData = await values[1].json();
-
+      const enlacesData = await values[2].json();
       if (usuarioData.cod === "404") {
         alert(usuarioData.message);
       } else {
@@ -33,6 +36,12 @@ function Dashboard() {
         // Almacena los datos de rol en el estado
         setDatosRol(rolData);
         console.log("Datos de rol:", rolData);
+      }
+      if (enlacesData.cod === "404") {
+        alert(enlacesData.message);
+      } else {
+        setDatosEnlaces(enlacesData); // Almacena los datos de enlaces en el estado
+        console.log("Datos de enlaces:", enlacesData);
       }
     });
   }, []);
@@ -52,7 +61,7 @@ function Dashboard() {
       <BrowserRouter>
         <div className="flex">
           <section
-            className={`gradient-bg h-screen w-[15%] flex flex-col items-center gap-16 pt-16 fixed `}
+            className={`gradient-bg h-screen w-[20%] flex flex-col items-center gap-16 pt-16 fixed `}
           >
             <div className=" flex flex-col justify-center items-center gap-4">
               <img
@@ -128,7 +137,7 @@ function Dashboard() {
             }
            
           </section>
-          <div className="bg-slate-600 h-screen w-[15%]">
+          <div className="bg-slate-600 h-screen w-[20%]">
 
           </div>
           <div className="flex flex-col w-screen h-[200px]">
@@ -168,7 +177,7 @@ function Dashboard() {
             <Route path="/roles" element={<Roles datosRol={datosRol}  />} />
             <Route path="/usuario" element={<New datos={datos}/>} />
             <Route path="/bitacoras" element={<Bitacoras />} />
-            <Route path="/enlaces" element={<Enlaces />} />
+            <Route path="/enlaces" element={<Enlaces datosEnlaces={datosEnlaces} />} />
            </Routes>
           </div>
         </div>

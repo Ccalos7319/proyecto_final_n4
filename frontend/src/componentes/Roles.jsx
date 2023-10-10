@@ -1,8 +1,13 @@
 
 import { useEffect, useState } from "react";
+import CrearRoles_db from "../handle_db/CrearRoles_db";
 function Roles({datosRol }) {
   const [dataRol, setDataRol] = useState([]);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
+  const toggleFormulario = () => {
+    setMostrarFormulario(!mostrarFormulario);
+  };
   useEffect(() => {
     setDataRol(datosRol); // Asigna los datos de la API a dataEstudiante
   }, [datosRol]);
@@ -12,9 +17,9 @@ function Roles({datosRol }) {
     <div className="container mx-auto">
       <div className=" flex justify-between">
         <h1 className="text-2xl font-bold my-4">Roles</h1>
-        <button className=" w-[150px] h-8 bg-teal-400 rounded-xl">Agregar Rol</button>
+        <button onClick={toggleFormulario} className=" w-[150px] h-8 bg-teal-400 rounded-xl">Agregar Rol</button>
       </div>
-      
+      {mostrarFormulario && <CrearRoles_db /> }
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>

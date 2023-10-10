@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-
+import CrearUusuario_db from "../handle_db/CrearUusuario_db";
 function New({ datos }) {
   const [dataEstudiante, setDataEstudiante] = useState([]);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
+  const toggleFormulario = () => {
+    setMostrarFormulario(!mostrarFormulario);
+  };
   useEffect(() => {
     setDataEstudiante(datos); // Asigna los datos de la API a dataEstudiante
   }, [datos]);
@@ -10,7 +14,12 @@ function New({ datos }) {
   return (
     <>
       <div className="container mx-auto">
+        
+        <div className=" flex justify-between">
         <h1 className="text-2xl font-bold my-4">Usuarios</h1>
+        <button onClick={toggleFormulario} className=" w-[150px] h-8 bg-teal-400 rounded-xl">Agregar Usuario</button>
+      </div>
+      {mostrarFormulario && <CrearUusuario_db />}
         <table className="min-w-full divide-y divide-gray-200">
           <thead>
             <tr>

@@ -53,6 +53,7 @@ class PaginaController extends Controller
     public function show(Pagina $id)
     {
         $pagina = new Pagina();
+      
         return $pagina->find($id);
     }
 
