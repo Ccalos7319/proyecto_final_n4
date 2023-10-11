@@ -1,50 +1,49 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { useState } from "react";
+import {  NavLink } from "react-router-dom";
 import Profile from "./Profile";
-import New from "./New";
-import Parametros from "./Parametros";
-import Roles from "./Roles";
-import Bitacoras from "./Bitacoras";
-import Enlaces from "./Enlaces";
-function Dashboard() {
+// import New from "./New";
+// import Roles from "./Roles";
+// import Enlaces from "./Enlaces";
+function Dasboard() {
+ 
   const [isVisible, setIsVisible] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(false);
   const [isMenuActive, setIsMenuActive] = useState(false);
 
-  const [datos, setDatos] = useState();
-  const [datosRol, setDatosRol] = useState([]);
-  const [datosEnlaces, setDatosEnlaces] = useState([]);
-  useEffect(() => {
-    const promesaUsuario = fetch("http://127.0.0.1:8000/api/usuario");
-    const promesaRol =  fetch("http://127.0.0.1:8000/api/rol");
-    const promesaEnlaces = fetch("http://127.0.0.1:8000/api/enlaces"); // Agrega esta línea
+  // const [datos, setDatos] = useState();
+  // const [datosRol, setDatosRol] = useState([]);
+  // const [datosEnlaces, setDatosEnlaces] = useState([]);
+  // useEffect(() => {
+  //   const promesaUsuario = fetch("http://127.0.0.1:8000/api/usuario");
+  //   const promesaRol =  fetch("http://127.0.0.1:8000/api/rol");
+  //   const promesaEnlaces = fetch("http://127.0.0.1:8000/api/enlaces"); // Agrega esta línea
 
-    Promise.all([promesaUsuario,promesaRol, promesaEnlaces]).then(async (values) => {
-      const usuarioData = await values[0].json();
-      const rolData = await values[1].json();
-      const enlacesData = await values[2].json();
-      if (usuarioData.cod === "404") {
-        alert(usuarioData.message);
-      } else {
-        setDatos(usuarioData);
-        console.log(usuarioData);
-      }
+  //   Promise.all([promesaUsuario,promesaRol, promesaEnlaces]).then(async (values) => {
+  //     const usuarioData = await values[0].json();
+  //     const rolData = await values[1].json();
+  //     const enlacesData = await values[2].json();
+  //     if (usuarioData.cod === "404") {
+  //       alert(usuarioData.message);
+  //     } else {
+  //       setDatos(usuarioData);
+  //       console.log(usuarioData);
+  //     }
 
-      if (rolData.cod === "404") {
-        alert(rolData.message);
-      } else {
-        // Almacena los datos de rol en el estado
-        setDatosRol(rolData);
-        console.log("Datos de rol:", rolData);
-      }
-      if (enlacesData.cod === "404") {
-        alert(enlacesData.message);
-      } else {
-        setDatosEnlaces(enlacesData); // Almacena los datos de enlaces en el estado
-        console.log("Datos de enlaces:", enlacesData);
-      }
-    });
-  }, []);
+  //     if (rolData.cod === "404") {
+  //       alert(rolData.message);
+  //     } else {
+  //       // Almacena los datos de rol en el estado
+  //       setDatosRol(rolData);
+  //       console.log("Datos de rol:", rolData);
+  //     }
+  //     if (enlacesData.cod === "404") {
+  //       alert(enlacesData.message);
+  //     } else {
+  //       setDatosEnlaces(enlacesData); // Almacena los datos de enlaces en el estado
+  //       console.log("Datos de enlaces:", enlacesData);
+  //     }
+  //   });
+  // }, []);
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -58,7 +57,9 @@ function Dashboard() {
 
   return (
     <>
-      <BrowserRouter>
+    
+    
+     
         <div className="flex">
           <section
             className={`gradient-bg h-screen w-[20%] flex flex-col items-center gap-16 pt-16 fixed `}
@@ -172,18 +173,13 @@ function Dashboard() {
               </div>
               
             )}
-            <Routes>
-            <Route path="/parametros" element={<Parametros />} />
-            <Route path="/roles" element={<Roles datosRol={datosRol}  />} />
-            <Route path="/usuario" element={<New datos={datos}/>} />
-            <Route path="/bitacoras" element={<Bitacoras />} />
-            <Route path="/enlaces" element={<Enlaces datosEnlaces={datosEnlaces} />} />
-           </Routes>
+              
+             
           </div>
         </div>
-      </BrowserRouter>
+      
     </>
   );
 }
 
-export default Dashboard;
+export default Dasboard;

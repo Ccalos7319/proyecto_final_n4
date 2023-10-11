@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import * as Yup from 'yup';
-import Dashboard from './Dasboard';
-
-
 export default function Login() {
     const [usuario, setUsuario] = useState('');
     const [clave, setClave] = useState('');
@@ -22,7 +19,6 @@ export default function Login() {
             setErrors({});
         
             const response = await axios.get('http://127.0.0.1:8000/api/usuario');
-        
             if (response.status === 200) {
                 const usuarios = response.data;
         
@@ -36,14 +32,17 @@ export default function Login() {
                 // Verificar si el idrol es igual a 1
                 if (usuarioEncontrado.id_rol === 1) {
                     // Redireccionar a la vista de /usuarios
-                    
-                   <Dashboard />
-                } 
+                      window.location.href = '/dasboard';
+                } else {
+                    // Redireccionar a la vista de /dashboard
+                    window.location.href = '/usuarios';
+
+                   
+                }
             } else {
                 // Mostrar un mensaje de error si la respuesta no es 200
                 alert('Error al obtener la lista de usuarios');
             }
-            console.log("los datos del usuario es:",usuarioEncontrado)
         }
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
