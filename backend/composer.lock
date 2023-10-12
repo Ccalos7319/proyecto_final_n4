@@ -367,6 +367,7 @@
         },
         {
             "name": "egulias/email-validator",
+<<<<<<< HEAD
             "version": "4.0.1",
             "source": {
                 "type": "git",
@@ -377,6 +378,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/3a85486b709bc384dae8eb78fb2eec649bdb64ff",
                 "reference": "3a85486b709bc384dae8eb78fb2eec649bdb64ff",
+=======
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "ebaaf5be6c0286928352e054f2d5125608e5405e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ebaaf5be6c0286928352e054f2d5125608e5405e",
+                "reference": "ebaaf5be6c0286928352e054f2d5125608e5405e",
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
                 "shasum": ""
             },
             "require": {
@@ -385,8 +398,13 @@
                 "symfony/polyfill-intl-idn": "^1.26"
             },
             "require-dev": {
+<<<<<<< HEAD
                 "phpunit/phpunit": "^9.5.27",
                 "vimeo/psalm": "^4.30"
+=======
+                "phpunit/phpunit": "^10.2",
+                "vimeo/psalm": "^5.12"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -422,7 +440,11 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/egulias/EmailValidator/tree/4.0.1"
+=======
+                "source": "https://github.com/egulias/EmailValidator/tree/4.0.2"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
             },
             "funding": [
                 {
@@ -430,7 +452,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2023-01-14T14:17:03+00:00"
+=======
+            "time": "2023-10-06T06:47:41+00:00"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
         },
         {
             "name": "fruitcake/php-cors",
@@ -1612,6 +1638,7 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
             "version": "3.16.0",
             "source": {
                 "type": "git",
@@ -1622,6 +1649,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4fdf372ca6b63c6e281b1c01a624349ccb757729",
                 "reference": "4fdf372ca6b63c6e281b1c01a624349ccb757729",
+=======
+            "version": "3.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "bd4c9b26849d82364119c68429541f1631fba94b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/bd4c9b26849d82364119c68429541f1631fba94b",
+                "reference": "bd4c9b26849d82364119c68429541f1631fba94b",
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
                 "shasum": ""
             },
             "require": {
@@ -1639,8 +1678,13 @@
                 "symfony/http-client": "<5.2"
             },
             "require-dev": {
+<<<<<<< HEAD
                 "async-aws/s3": "^1.5",
                 "async-aws/simple-s3": "^1.1",
+=======
+                "async-aws/s3": "^1.5 || ^2.0",
+                "async-aws/simple-s3": "^1.1 || ^2.0",
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
                 "aws/aws-sdk-php": "^3.220.0",
                 "composer/semver": "^3.0",
                 "ext-fileinfo": "*",
@@ -1686,7 +1730,11 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/thephpleague/flysystem/tree/3.16.0"
+=======
+                "source": "https://github.com/thephpleague/flysystem/tree/3.17.0"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
             },
             "funding": [
                 {
@@ -1698,7 +1746,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2023-09-07T19:22:17+00:00"
+=======
+            "time": "2023-10-05T20:15:05+00:00"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
         },
         {
             "name": "league/flysystem-local",
@@ -2025,6 +2077,7 @@
         },
         {
             "name": "nette/schema",
+<<<<<<< HEAD
             "version": "v1.2.4",
             "source": {
                 "type": "git",
@@ -2035,6 +2088,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/nette/schema/zipball/c9ff517a53903b3d4e29ec547fb20feecb05b8ab",
                 "reference": "c9ff517a53903b3d4e29ec547fb20feecb05b8ab",
+=======
+            "version": "v1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/schema.git",
+                "reference": "0462f0166e823aad657c9224d0f849ecac1ba10a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/schema/zipball/0462f0166e823aad657c9224d0f849ecac1ba10a",
+                "reference": "0462f0166e823aad657c9224d0f849ecac1ba10a",
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
                 "shasum": ""
             },
             "require": {
@@ -2081,9 +2146,15 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/schema/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/nette/schema/tree/v1.2.4"
             },
             "time": "2023-08-05T18:56:25+00:00"
+=======
+                "source": "https://github.com/nette/schema/tree/v1.2.5"
+            },
+            "time": "2023-10-05T20:37:59+00:00"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
         },
         {
             "name": "nette/utils",
@@ -6619,6 +6690,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "10.3.5",
             "source": {
                 "type": "git",
@@ -6629,6 +6701,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/747c3b2038f1139e3dcd9886a3f5a948648b7503",
                 "reference": "747c3b2038f1139e3dcd9886a3f5a948648b7503",
+=======
+            "version": "10.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "9784e877e3700de37475545bdbdce8383ff53d25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9784e877e3700de37475545bdbdce8383ff53d25",
+                "reference": "9784e877e3700de37475545bdbdce8383ff53d25",
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
                 "shasum": ""
             },
             "require": {
@@ -6668,7 +6752,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-main": "10.3-dev"
+=======
+                    "dev-main": "10.4-dev"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
                 }
             },
             "autoload": {
@@ -6700,7 +6788,11 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/10.3.5"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.4.0"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
             },
             "funding": [
                 {
@@ -6716,7 +6808,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2023-09-19T05:42:37+00:00"
+=======
+            "time": "2023-10-06T03:41:22+00:00"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
         },
         {
             "name": "sebastian/cli-parser",
@@ -8072,5 +8168,9 @@
         "php": "^8.1"
     },
     "platform-dev": [],
+<<<<<<< HEAD
     "plugin-api-version": "2.6.0"
+=======
+    "plugin-api-version": "2.3.0"
+>>>>>>> 4110af0944fe3c12a2c49a61c56df05ecbc33ac6
 }
